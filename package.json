@@ -1,0 +1,16 @@
+{
+  "name": "yt_downloader",
+  "version": "1.0.0",
+  "description": "Download YouTube videos in highest quality.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ytdl-core": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Y1a2s3h4",
+  "license": "ISC"
+}

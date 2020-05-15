@@ -1,6 +1,5 @@
 const ytdl = require("ytdl-core");
 const router = require("express").Router();
-
 router.get("/", (req, res) => {
   const input = req.query.input;
   const itag = req.query.itag;

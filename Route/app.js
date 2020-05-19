@@ -1,5 +1,6 @@
 const ytdl = require("ytdl-core");
 const router = require("express").Router();
+
 router.get("/", (req, res) => {
   const input = req.query.input;
   const itag = req.query.itag;
@@ -8,20 +9,26 @@ router.get("/", (req, res) => {
     let format = ytdl.chooseFormat(info.formats, {
       quality: itag,
     });
+    let audioFormats = ytdl.filterFormats(info.formats, "audioonly");
     const arr = [];
     if (format) {
       const obj = {
         title: info.title,
         quality: format.qualityLabel,
+        channel_url: info.author.channel_url,
+        youtube_video_url: info.video_url,
         video_extension: format.container,
-        thumbnail_url:
-          info.player_response.microformat.playerMicroformatRenderer.thumbnail
-            .thumbnails[0].url,
-        download_url: format.url,
+        avatar_url: info.author.avatar,
+        subscribers_count: info.author.subscriber_count,
+        view_count: info.player_response.videoDetails.viewCount,
+        keywords: info.player_response.videoDetails.keywords,
+        thumbnail_urls: info.player_response.videoDetails.thumbnail,
+        video_url: format.url,
+        auidio_url: audioFormats[0].url,
       };
       arr.push(obj);
       res.send(arr);
-      console.log(format);
+      console.log(info);
     }
   });
 });

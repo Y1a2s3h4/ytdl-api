@@ -18,17 +18,18 @@ router.get("/", (req, res) => {
         channel_url: info.author.channel_url,
         youtube_video_url: info.video_url,
         video_extension: format.container,
+        audio_extension: audioFormats[0].container,
         avatar_url: info.author.avatar,
         subscribers_count: info.author.subscriber_count,
         view_count: info.player_response.videoDetails.viewCount,
         keywords: info.player_response.videoDetails.keywords,
         thumbnail_urls: info.player_response.videoDetails.thumbnail,
         video_url: format.url,
-        auidio_url: audioFormats[0].url,
+        audio_url: audioFormats[0].url,
       };
       arr.push(obj);
       res.send(arr);
-      console.log(info);
+      console.log(audioFormats);
     }
   });
 });

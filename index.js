@@ -6,6 +6,7 @@ const express = require("express"),
 app.use(cors());
 
 app.use("/v", require("./Route/app"));
+app.use("/q", require("./Route/download"));
 
 app.use((err, req, res, next) => res.status(err.statusCode).send(err));
 

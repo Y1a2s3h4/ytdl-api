@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const base64Img = require("base64-img");
 router.get("/", (req, res) => {
+  console.log("download");
   const dataUrl = req.query.dataUrl;
   base64Img.requestBase64(
     dataUrl,

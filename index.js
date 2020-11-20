@@ -8,8 +8,6 @@ app.use(cors());
 app.use("/v", require("./Route/app"));
 app.use("/q", require("./Route/download"));
 
-app.use((err, req, res, next) => res.status(err.statusCode).send(err));
-
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
 );

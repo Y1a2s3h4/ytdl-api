@@ -1,10 +1,15 @@
 const ytdl = require("ytdl-core");
 const router = require("express").Router();
 
+console.log("beginning");
 router.get("/", (req, res) => {
   const input = req.query.input;
   const itag = req.query.itag;
-  ytdl.getInfo(input, (err, info) => {
+  console.log("started");
+
+  ytdl.getBasicInfo(input, (err, info) => {
+    console.log("got url");
+
     if (err) throw err;
     let format = ytdl.chooseFormat(info.formats, {
       quality: itag,
